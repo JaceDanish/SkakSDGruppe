@@ -21,28 +21,28 @@ namespace ChessClassLibrary.Model
             }
             if (x1 > x2 && y1 > y2)
             {
-                for (int i = x1, j = y1; (i >= x2 && j >= y2); i--, j--)
+                for (int i = x1-1, j = y1-1; (i >= x2 && j >= y2); i--, j--)
                 {
                     return BishopCanMove(i, j, y2, x2, game);
                 }
             }
             if (x1 > x2 && y2 > y1)
             {
-                for (int i = x1, j = y1; (i >= x2 && j <= y2); i--, j++)
+                for (int i = x1-1, j = y1+1; (i >= x2 && j <= y2); i--, j++)
                 {
                     return BishopCanMove(i, j, y2, x2, game);
                 }
             }
             if (y1 > y2 && x2 > x1)
             {
-                for (int i = x1, j = y1; (i <= x2 && j >= y2); i++, j--)
+                for (int i = x1+1, j = y1-1; (i <= x2 && j >= y2); i++, j--)
                 {
                     return BishopCanMove(i, j, y2, x2, game);
                 }
             }
             if (x2 > x1 && y2 > y1)
             {
-                for (int i = x1, j = y1; (i <= x2 && j <= y2); i++, j++)
+                for (int i = x1+1, j = y1+1; (i <= x2 && j <= y2); i++, j++)
                 {
                     return BishopCanMove(i, j, y2, x2, game);
                 }
@@ -54,7 +54,7 @@ namespace ChessClassLibrary.Model
 
         public string Icon()
         {
-            throw new NotImplementedException();
+            return "B";
         }
 
         public bool IsWhite()
