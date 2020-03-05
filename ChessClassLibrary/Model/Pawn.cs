@@ -21,10 +21,10 @@ namespace ChessClassLibrary.Model
 		}
 
 		public bool IsWhite()
-		{
+        {
 
-			return 
-		}
+            return false;
+        }
 
 		public string Icon()
 		{
