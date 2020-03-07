@@ -14,7 +14,7 @@ namespace ChessClassLibrary.Model
 			_isWhite = isWhite;
 		}
 
-		public bool CheckMove(Game game, int x, int y, int x1, int x2)
+		public bool CheckMove(Game game, int x1, int y1, int x2, int y2)
 		{
 			
 			return false;
@@ -22,8 +22,7 @@ namespace ChessClassLibrary.Model
 
 		public bool IsWhite()
 		{
-
-			return 
+			return _isWhite;
 		}
 
 		public string Icon()
