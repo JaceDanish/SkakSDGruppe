@@ -7,7 +7,10 @@ namespace ChessConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ChessEngine chessEngine = new ChessEngine();
+
+            chessEngine.Start();
+            Console.ReadLine();
         }
     }
 }
