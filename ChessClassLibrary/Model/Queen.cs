@@ -7,11 +7,8 @@ namespace ChessClassLibrary.Model
     class Queen : IChessPiece
     {
         private bool _iswhite;
-
         private Rook _rook;
-
         private Bishop _bishop;
-        //lave objekt af Rook og bishop.
         
 
         public Queen(bool isWhite)
@@ -28,21 +25,19 @@ namespace ChessClassLibrary.Model
             {
                 return true;
             }
-
             else if (_bishop.CheckMove(game, x1, y1, x2, y2))
             {
                 return true;
             }
-
             return false;
         }
 
         
-
         public string Icon()
         {
             return "Q";
         }
+
 
         public bool IsWhite()
         {
