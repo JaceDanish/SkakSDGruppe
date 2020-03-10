@@ -14,7 +14,7 @@ namespace ChessClassLibrary.Model
             return _isWhite;
         }
 
-        public string icon()
+        public string Icon()
         {
             return "R";
         }
@@ -141,11 +141,6 @@ namespace ChessClassLibrary.Model
             return true;
         }
 
-
-        public string Icon()
-        {
-            throw new NotImplementedException();
-        }
 
         public bool IsWhite()
         {

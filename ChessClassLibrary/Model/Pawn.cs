@@ -27,7 +27,7 @@ namespace ChessClassLibrary.Model
 
 		public string Icon()
 		{
-			throw new NotImplementedException();
+			return "p";
 		}
 	}
 }

@@ -1,9 +1,9 @@
-﻿using System;
+﻿using ChessClassLibrary.Model;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Threading;
-
 
 namespace ChessConsoleApp
 {
@@ -11,10 +11,11 @@ namespace ChessConsoleApp
 	{
 		public void Start()
 		{
-			while (!ReadMove())
-			{
-				ReadMove();
-			}
+			TestMove();
+			//while (!ReadMove())
+			//{
+			//	ReadMove();
+			//}
 		}
 
 		public bool ReadMove()
@@ -41,7 +42,7 @@ namespace ChessConsoleApp
 			coorInput[2] = ((int)inputArray[3] - 47);
 
 
-			Game game = new Game();
+
 			return false;
 		}
 
@@ -53,7 +54,20 @@ namespace ChessConsoleApp
 		public bool TestMove()
 		{
 			
+			Game game = new Game();
+			game.PrintBoard();
+			game.Board[1, 0] = null;
+			game.Board[1, 1] = null;
+			game.Board[1, 2] = null;
+			game.Board[1, 3] = null;
+			game.Board[1, 4] = null;
+			game.Board[1, 5] = null;
+			game.Board[1, 6] = null;
+			game.Board[1, 7] = null;
 
+			bool res = game.Board[0, 3].CheckMove(game, 0,3,5,5);
+
+			Console.WriteLine($"konge move {res}");
 			return false;
 		}
 	}
