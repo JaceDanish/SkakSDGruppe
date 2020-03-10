@@ -10,7 +10,7 @@ namespace ChessClassLibrary.Model
 
         public Queen(bool iswhite)
         {
-            _iswhite = isWhite;
+            _iswhite = iswhite;
         }
 
 

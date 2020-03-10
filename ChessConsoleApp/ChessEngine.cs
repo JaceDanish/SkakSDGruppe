@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Threading;
+using ChessClassLibrary.Model;
 
 
 namespace ChessConsoleApp
@@ -40,8 +41,9 @@ namespace ChessConsoleApp
 			coorInput[3] = ((int)inputArray[2] - 97);
 			coorInput[2] = ((int)inputArray[3] - 47);
 
-			Game game = new Game();	
-			
+
+
+			return false;
 		}
 
 		public bool TestBorders()
@@ -51,6 +53,8 @@ namespace ChessConsoleApp
 
 		public bool TestMove()
 		{
+			Game game = new Game();
+
 			return false;
 		}
 	}
