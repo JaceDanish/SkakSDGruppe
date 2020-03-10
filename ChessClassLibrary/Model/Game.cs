@@ -6,15 +6,16 @@ namespace ChessClassLibrary.Model
 {
 	public class Game
 	{
-		private IChessPiece[,] _board;
+		public IChessPiece[,] Board;
 
 		public Game()
 		{
-			_board = FillBoard();
+			Board = new IChessPiece[8,8];
+			Board = FillBoard();
 
 		}
 
-		public IChessPiece[,] Board { get; set; }
+		//public IChessPiece[,] Board { get; set; }
 
 		private IChessPiece[,] FillBoard()
 		{
