@@ -19,8 +19,51 @@ namespace ChessClassLibrary.Model
             get; set;
         }
 
+        private IChessPiece[,] FillBoard()
+        {
+            IChessPiece[,] board = new IChessPiece[8, 8];
 
-
-
+            for (int i = 0; i < 8; i++)
+                for (int j = 0; j < 8; j++)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                        case 7:
+                            {
+                                switch (j)
+                                {
+                                    case 0:
+                                    case 7:
+                                        board[i, j] = new Rook(i == 0 ? true : false);
+                                        break;
+                                    case 1:
+                                    case 6:
+                                        board[i, j] = new Knight(i == 0 ? true : false);
+                                        break;
+                                    case 2:
+                                    case 5:
+                                        board[i, j] = new Bishop(i == 0 ? true : false);
+                                        break;
+                                    case 3:
+                                        board[i, j] = new Queen(i == 0 ? true : false);
+                                        break;
+                                    case 4:
+                                        board[i, j] = new King(i == 0 ? true : false);
+                                        break;
+                                }
+                            }
+                            break;
+                        case 1:
+                        case 6:
+                            board[i, j] = new Pawn(i == 1 ? true : false);
+                            break;
+                        default:
+                            board[i, j] = null;
+                            break;
+                    }
+                }
+            return board;
+        }
     }
 }
