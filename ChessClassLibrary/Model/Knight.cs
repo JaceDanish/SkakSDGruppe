@@ -6,6 +6,7 @@ namespace ChessClassLibrary.Model
 {
     class Knight : IChessPiece
     {
+        
         public bool CheckMove(Game game, int x1, int y1, int x2, int y2)
         {
             throw new NotImplementedException();
