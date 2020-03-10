@@ -2,7 +2,7 @@
 
 namespace ChessClassLibrary
 {
-    class King : IChessPiece
+    public class King : IChessPiece
     {
         private bool _isWhite;
 

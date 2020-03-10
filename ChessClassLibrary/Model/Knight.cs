@@ -6,12 +6,33 @@ namespace ChessClassLibrary.Model
 {
     class Knight : IChessPiece
     {
-        
-        public bool CheckMove(Game game, int x1, int y1, int x2, int y2)
+        private bool _isWhite;
+
+        public bool IsWhite()
         {
-            throw new NotImplementedException();
+            return _isWhite;
         }
 
+        public string Icon()
+        {
+            return "N";
+        }
+
+        public Knight(bool isWhite)
+        {
+            _isWhite = isWhite;
+        }
+
+        public bool CheckMove(Game game, int x1, int y1, int x2, int y2)
+        {
+            return true;
+            
+            //throw new NotImplementedException();
+        }
+
+
+
+        /*
         public string Icon()
         {
             throw new NotImplementedException();
@@ -21,5 +42,8 @@ namespace ChessClassLibrary.Model
         {
             throw new NotImplementedException();
         }
+        */
+
+
     }
 }
