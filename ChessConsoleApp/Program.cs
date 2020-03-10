@@ -1,5 +1,5 @@
 ﻿using System;
-using ChessClassLibrary;
+using ChessClassLibrary.Model;
 
 namespace ChessConsoleApp
 {
