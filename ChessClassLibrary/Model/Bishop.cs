@@ -17,34 +17,49 @@ namespace ChessClassLibrary.Model
         {
             if (Math.Abs(x1 - y1) != Math.Abs(x2 - y2))
             {
-                return false;
+                if (x1 - y1 != x2 - y2)
+                {
+                    return false;
+                }
             }
             if (x1 > x2 && y1 > y2)
             {
                 for (int i = x1-1, j = y1-1; (i >= x2 && j >= y2); i--, j--)
                 {
-                    return BishopCanMove(i, j, y2, x2, game);
+                    if (!BishopCanMove(i, j, y2, x2, game))
+                    {
+                        return false;
+                    }
                 }
             }
             if (x1 > x2 && y2 > y1)
             {
                 for (int i = x1-1, j = y1+1; (i >= x2 && j <= y2); i--, j++)
                 {
-                    return BishopCanMove(i, j, y2, x2, game);
+                    if (!BishopCanMove(i, j, y2, x2, game))
+                    {
+                        return false;
+                    }
                 }
             }
             if (y1 > y2 && x2 > x1)
             {
                 for (int i = x1+1, j = y1-1; (i <= x2 && j >= y2); i++, j--)
                 {
-                    return BishopCanMove(i, j, y2, x2, game);
+                    if (!BishopCanMove(i, j, y2, x2, game))
+                    {
+                        return false;
+                    }
                 }
             }
             if (x2 > x1 && y2 > y1)
             {
                 for (int i = x1+1, j = y1+1; (i <= x2 && j <= y2); i++, j++)
                 {
-                    return BishopCanMove(i, j, y2, x2, game);
+                    if (!BishopCanMove(i, j, y2, x2, game))
+                    {
+                        return false;
+                    }
                 }
             }
 

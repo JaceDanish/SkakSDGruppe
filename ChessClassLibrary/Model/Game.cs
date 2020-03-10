@@ -11,12 +11,16 @@ namespace ChessClassLibrary.Model
         public Game()
         {
             _board = new IChessPiece[8, 8];
-        }
 
+        }
 
         public IChessPiece[,] Board
         {
             get; set;
         }
+
+
+
+
     }
 }
