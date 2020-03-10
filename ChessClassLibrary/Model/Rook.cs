@@ -26,6 +26,9 @@ namespace ChessClassLibrary.Model
 
         public bool CheckMove(Game game, int x1, int y1, int x2, int y2)
         {
+
+
+            /*
             bool res = false;
             // Brætfelt F3 (x1, y1) husk det er 0 indekseret
             if (x1 == x2 || y1 == y2)
@@ -133,11 +136,10 @@ namespace ChessClassLibrary.Model
             else res = false;
 
             return res;
+            */
+
+            return true;
         }
-
-
-
-
 
 
         public string Icon()
