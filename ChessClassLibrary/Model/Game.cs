@@ -10,7 +10,7 @@ namespace ChessClassLibrary.Model
 
         public Game()
         {
-            _board = new IChessPiece[8, 8];
+            _board = FillBoard();
 
         }
 
@@ -65,5 +65,37 @@ namespace ChessClassLibrary.Model
                 }
             return board;
         }
-    }
+
+        public void PrintBoard()
+        {
+            Console.Clear();
+            for (int i = -1; i < 8; i++)
+            {
+                Console.WriteLine();
+                for (int j = -1; j < 8; j++)
+                {
+                    if (i == -1 && j == -1)
+                    {
+                        Console.Write("");
+                    }
+                    else if (i == -1)
+                    {
+                        Console.Write("  " + (char)(j + 65));
+                    }
+                    else if (j == -1)
+                    {
+                        Console.Write(i + 1);
+                    }
+                    else if (Board[i, j] != null)
+                    {
+                        Console.Write(" " + Board[i, j].Icon());
+                    }
+                    else
+                    {
+                        Console.Write(" . ");
+                    }
+                }
+
+            }
+        }
 }
