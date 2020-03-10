@@ -6,6 +6,14 @@ namespace ChessClassLibrary.Model
 {
     class Queen : IChessPiece
     {
+        private bool _iswhite;
+
+        public Queen(bool iswhite)
+        {
+            _iswhite = isWhite;
+        }
+
+
         public bool CheckMove(Game game, int x1, int y1, int x2, int y2)
         {
             throw new NotImplementedException();
@@ -13,12 +21,12 @@ namespace ChessClassLibrary.Model
 
         public string Icon()
         {
-            throw new NotImplementedException();
+            return "Q";
         }
 
         public bool IsWhite()
         {
-            throw new NotImplementedException();
+            return _iswhite;
         }
     }
 }
