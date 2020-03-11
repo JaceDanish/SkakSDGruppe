@@ -9,41 +9,64 @@ namespace ChessConsoleApp
 {
 	class ChessEngine
 	{
+		private bool whitesMove = true;
+		private bool gameOver = false;
+		private Game game = new Game();
+
 		public void Start()
 		{
-			TestMove();
-			//while (!ReadMove())
-			//{
-			//	ReadMove();
-			//}
+			while (!gameOver)
+			{
+				PlayGame();
+			}
+		}
+
+		void PlayGame()
+		{
+			game.PrintBoard();
+			Console.WriteLine($"\n\nPlayer {(whitesMove ? "white" : "black")}, move:");
+			while (!ReadMove())
+			{
+				ReadMove();
+			}
 		}
 
 		public bool ReadMove()
 		{
 			string input = Console.ReadLine();
-
-			if (input.Length != 4)
+			if (!checkLength(input))
 			{
 				return false;
 			}
 
-			input = input.ToLower();
-
-			char[] inputArray = input.ToCharArray();
-
-
-			//a: -97
-			//1: - 49
+			int[] intArray = ConvertToIntArray(input);
 			
-			int[] coorInput = new int[4];
-			coorInput[1] = ((int)inputArray[0] - 97);
-			coorInput[0] = ((int)inputArray[1] - 47);
-			coorInput[3] = ((int)inputArray[2] - 97);
-			coorInput[2] = ((int)inputArray[3] - 47);
+			if (!TestMove())
+			{
+				return false;
+			}
+			return true;
+		}
 
+		private bool checkLength(string str) //Length of input MUST be exactly 4 ie. LetterNumberLetterNumber
+		{
+			if (str.Length != 4)
+			{
+				return false;
+			}
+			return true;
+		}
 
-
-			return false;
+		private int[] ConvertToIntArray(string input)
+		{
+			input = input.ToLower();
+			char[] inputArray = input.ToCharArray();
+			int[] intArray = new int[4];
+			intArray[1] = ((int)inputArray[0] - 97);
+			intArray[0] = ((int)inputArray[1] - 47);
+			intArray[3] = ((int)inputArray[2] - 97);
+			intArray[2] = ((int)inputArray[3] - 47);
+			return intArray;
 		}
 
 		public bool TestBorders()
@@ -53,8 +76,7 @@ namespace ChessConsoleApp
 
 		public bool TestMove()
 		{
-			
-			Game game = new Game();
+
 			game.PrintBoard();
 			game.Board[1, 0] = null;
 			game.Board[1, 1] = null;
@@ -65,7 +87,7 @@ namespace ChessConsoleApp
 			game.Board[1, 6] = null;
 			game.Board[1, 7] = null;
 
-			bool res = game.Board[0, 3].CheckMove(game, 0,3,5,5);
+			bool res = game.Board[0, 3].CheckMove(game, 0, 3, 5, 5);
 
 			Console.WriteLine($"konge move {res}");
 			return false;
