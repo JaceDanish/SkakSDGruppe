@@ -74,6 +74,8 @@ namespace ChessConsoleApp
                 return false;
             }
             //Must be changed before "rokade" can be implemented(maybe not....)
+            //Rokade:
+            //King is moved 2 squares left or right and Rook is moved to the other side of the king.
             if (game.Board[intInpArray[2], intInpArray[3]] != null && game.Board[intInpArray[2], intInpArray[3]].IsWhite() == whitesTurn)
             {
                 Console.WriteLine("Illegal move!");
