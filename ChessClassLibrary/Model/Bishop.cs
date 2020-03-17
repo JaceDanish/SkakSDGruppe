@@ -79,6 +79,9 @@ namespace ChessClassLibrary.Model
 
         private bool BishopCanMove(int i, int j, int y2, int x2, Game game)
         {
+            if (i < 0 || i > 7 || j < 0 || j > 7)
+                return false;
+
             if (game.Board[i, j] != null)
             {
                 if (game.Board[i, j].IsWhite() == _isWhite)
