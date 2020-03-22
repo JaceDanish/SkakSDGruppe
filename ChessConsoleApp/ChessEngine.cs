@@ -18,25 +18,31 @@ namespace ChessConsoleApp
 		{
 			//Nu kan vi lave tegn
 			Console.OutputEncoding = Encoding.Unicode;
-
+			int[] intArray;
 			while (!gameOver)
 			{
 				game.PrintBoard();
-				ReadMove();
+				intArray = ReadMove();
+				MovePiece(intArray);
 				whitesMove = !whitesMove;
 			}
 		}
 
+		public void MovePiece(int[] intArray)
+		{
+			game.Board[intArray[2], intArray[3]] = game.Board[intArray[0], intArray[1]];
+			game.Board[intArray[0], intArray[1]] = null;
+		}
+
 		public int[] ReadMove()
 		{
-			int[] intArray;// = new int[4];
-								//if (!checkLength(input))
+			int[] intArray = new int[4] {-1, -1, -1, -1};
 			do
 			{
 				Console.WriteLine($"\n\nPlayer {(whitesMove ? "white" : "black")}, move:");
 				string input = Console.ReadLine();
+				if (!CheckLength(input)) continue;
 				intArray = ConvertToIntArray(input);
-
 			} while (!CheckMove(intArray));
 			return intArray;
 
@@ -48,53 +54,69 @@ namespace ChessConsoleApp
 			char[] inputArray = input.ToCharArray();
 			int[] intArray = new int[4];
 			intArray[1] = ((int)inputArray[0] - 97);
-			intArray[0] = ((int)inputArray[1] - 47);
+			intArray[0] = ((int)inputArray[1] - 49);
 			intArray[3] = ((int)inputArray[2] - 97);
-			intArray[2] = ((int)inputArray[3] - 47);
+			intArray[2] = ((int)inputArray[3] - 49);
+			Console.WriteLine("intArray 0: " + intArray[1]);
+			Console.WriteLine("intArray 1: " + intArray[0]);
+			Console.WriteLine("intArray 2: " + intArray[3]);
+			Console.WriteLine("intArray 3: " + intArray[2]);
+
 			return intArray;
 		}
 
 		public bool CheckMove(int[] intArray)
 		{
-			if (!CheckLength(intArray)) return false;
 			if (!CheckBorders(intArray)) return false;
 			if (NoChessPiece(intArray)) return false;
 			if (WrongColor(intArray)) return false;
-			if (TakingWrongColorPiece(intArray)) return false;
+			if (!TakingWrongColorPiece(intArray)) return false;
 			if (!ChessPieceCheckMove(intArray)) return false;
 			return true;
 		}
 
-		private bool TakingWrongColorPiece(int[] intArray) //return true if trying to take a piece of the opposite color
+		private bool TakingWrongColorPiece(int[] intArray) //returns true if trying to take a piece of the opposite color
+																			//returns true if there is no chesspiece on the new square
 		{
-			return game.Board[intArray[2], intArray[3]].IsWhite() == whitesMove;
+			if (game.Board[intArray[2], intArray[3]] == null) return true;
+			if (game.Board[intArray[2], intArray[3]] != null)
+			{
+				if (game.Board[intArray[2], intArray[3]].IsWhite() != whitesMove)
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 
-		private bool ChessPieceCheckMove(int[] intArray)  //return true if selected piece can make an illegal move
+		private bool ChessPieceCheckMove(int[] intArray)  //returns true if selected piece can make an illegal move
 		{
 			return game.Board[intArray[0], intArray[1]].CheckMove(game, intArray[0], intArray[1], intArray[2], intArray[3]);
 		}
 
-		private bool WrongColor(int[] intArray) //returning true if trying to move wrong color piece
+		private bool WrongColor(int[] intArray) //returns true if trying to move wrong color piece
 		{
+			bool color = game.Board[intArray[0], intArray[1]].IsWhite();
+			Console.WriteLine(color);
 			return game.Board[intArray[0], intArray[1]].IsWhite() != whitesMove;
 		}
 
-		private bool NoChessPiece(int[] intArray) //returning true if there is no chess piece on the square 
+		private bool NoChessPiece(int[] intArray) //returns true if there is no chess piece on the square 
 		{
 			return game.Board[intArray[0], intArray[1]] == null ? true : false;
 		}
 
-		private bool CheckLength(int[] intArray) //Length of input MUST be exactly 4 ie. LetterNumberLetterNumber 
+		private bool CheckLength(string str) //Length of input MUST be exactly 4 ie. LetterNumberLetterNumber
+														 //returns true if input is exactly 4 characters
 		{
-			if (intArray.Length != 4)
+			if (str.Length != 4)
 			{
 				return false;
 			}
 			return true;
 		}
 		
-		private bool CheckBorders(int[] intArray)// intArray must be between 0 and 7 
+		private bool CheckBorders(int[] intArray)// intArray must be between 0 and 7. Returns true if it is
 		{
 			for (int i = 0; i < 4; i++)
 			{
