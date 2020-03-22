@@ -54,7 +54,30 @@ namespace ChessClassLibrary.Model
 
 			//Console.WriteLine("xVect: " + xVect + "\nyVect: " + yVect);
 
+			public bool CheckMove(int x1, int y1, int x2, int y2, Game game)
+			{
+				if (x1 != x2 && y1 != y2)
+					return false;
 
+				int xDir = 0, yDir = 0;
+
+				if (x1 < x2)
+					xDir = 1;
+				else if (x1 > x2)
+					xDir = -1;
+				else if (y1 < y2)
+					yDir = 1;
+				else
+					yDir = -1;
+
+				for (int i = x1 + xDir, j = y1 + yDir; (i != x2 || j != y2); i += xDir, j += yDir)
+				{
+					if (game.Board[i, j] != null && (i != x2 || j != y2))
+						return false;
+				}
+
+				return true;
+			}
 		}
 
 		public int CreateVector(int dist)
