@@ -13,7 +13,7 @@ namespace ChessClassLibrary
 
         public string Icon()
         {
-            return "K";
+            return $"{(IsWhite() ? "╋" : "╬")}" + " ";
         }
 
         public bool IsWhite()

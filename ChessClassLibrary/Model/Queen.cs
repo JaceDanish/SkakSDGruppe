@@ -35,7 +35,7 @@ namespace ChessClassLibrary.Model
         
         public string Icon()
         {
-            return "Q";
+            return $"{(IsWhite() ? "•♀" : "○♀")}" + "";
         }
 
 

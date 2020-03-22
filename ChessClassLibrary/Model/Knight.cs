@@ -8,16 +8,6 @@ namespace ChessClassLibrary.Model
     {
         private bool _isWhite;
 
-        public bool IsWhite()
-        {
-            return _isWhite;
-        }
-
-        public string Icon()
-        {
-            return "N";
-        }
-
         public Knight(bool isWhite)
         {
             _isWhite = isWhite;
@@ -36,20 +26,14 @@ namespace ChessClassLibrary.Model
             return false;
         }
 
-
-
-        /*
-        public string Icon()
-        {
-            throw new NotImplementedException();
-        }
-
         public bool IsWhite()
         {
-            throw new NotImplementedException();
+            return _isWhite;
         }
-        */
 
-
+        public string Icon()
+        {
+            return $"{(IsWhite() ? "┳┓" : "╦╗")}" + "";
+        }
     }
 }

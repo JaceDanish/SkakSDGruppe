@@ -87,7 +87,7 @@ namespace ChessClassLibrary.Model
 					}
 					else if (Board[i, j] != null)
 					{
-						Console.Write($" {Board[i, j].Icon()} ");
+						Console.Write(" " + Board[i, j].Icon());
 					}
 					else
 					{

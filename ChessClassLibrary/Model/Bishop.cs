@@ -69,7 +69,7 @@ namespace ChessClassLibrary.Model
 
         public string Icon()
         {
-            return "B";
+            return $"{(IsWhite() ? "▲" : "∆")}" + " ";
         }
 
         public bool IsWhite()

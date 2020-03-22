@@ -47,7 +47,8 @@ namespace ChessClassLibrary.Model
 
 		public string Icon()
 		{
-			return "p";
-		}
+            return $"{(IsWhite() ? "☻" : "☺")}" + " ";
+            //return $"{(IsWhite() ? "P" : "p")}" + " ";
+        }
 	}
 }

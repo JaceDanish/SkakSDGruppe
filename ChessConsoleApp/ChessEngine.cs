@@ -16,6 +16,9 @@ namespace ChessConsoleApp
 
 		public void Start()
 		{
+			//Nu kan vi lave tegn
+			Console.OutputEncoding = Encoding.Unicode;
+
 			while (!gameOver)
 			{
 				game.PrintBoard();
@@ -121,7 +124,7 @@ namespace ChessConsoleApp
 
 		//	Console.WriteLine($"konge move {res}");
 		//	return false;
-		}
+		//}
 	}
 
 }

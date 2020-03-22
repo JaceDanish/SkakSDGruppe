@@ -9,16 +9,6 @@ namespace ChessClassLibrary.Model
     {
         private bool _isWhite;
 
-        public bool isWhite()
-        {
-            return _isWhite;
-        }
-
-        public string Icon()
-        {
-            return "R";
-        }
-
         public Rook(bool isWhite)
         {
             _isWhite = isWhite;
@@ -141,10 +131,14 @@ namespace ChessClassLibrary.Model
             return true;
         }
 
+        public string Icon()
+        {
+            return $"{(IsWhite() ? "■" : "□")}" + " ";
+        }
 
         public bool IsWhite()
         {
-            throw new NotImplementedException();
+            return _isWhite;
         }
     }
 }
