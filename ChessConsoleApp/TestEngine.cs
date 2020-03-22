@@ -1,4 +1,5 @@
-﻿using ChessClassLibrary.Model;
+﻿using ChessClassLibrary;
+using ChessClassLibrary.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -99,6 +100,55 @@ namespace ChessConsoleApp
             intInpArray[2] = ((int)inpArray[3] - 49);
 
             return intInpArray;
+        }
+
+        private bool CheckKing(Game game, int[] inp)
+        {
+            Game testGame = new Game();
+
+            for (int i = 0; i < 8; i++)
+                for (int j = 0; j < 8; j++)
+                    testGame.Board[i, j] = game.Board[i, j];
+
+            int xKing = 0, yKing = 0;
+
+            if (!(testGame.Board[inp[0], inp[1]] is King))
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    for (int j = 0; j < 8; j++)
+                    {
+                        if (testGame.Board[i, j] is King && testGame.Board[i, j].IsWhite() == testGame.Board[inp[0], inp[1]].IsWhite())
+                        {
+                            xKing = i; yKing = j;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                xKing = inp[2];
+                yKing = inp[3];
+            }
+            MovePiece(inp, testGame);
+
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (testGame.Board[i, j] != null)
+                        if (testGame.Board[i, j].IsWhite() != testGame.Board[xKing, yKing].IsWhite())
+                        {
+                            if (testGame.Board[i, j].CheckMove(testGame, i, j, xKing, yKing))
+                            {
+                                //Console.WriteLine($"{i}, {j}");
+                                return false;
+                            }
+                        }
+                }
+            }
+            return true;
         }
 
         private void StartScreen()
