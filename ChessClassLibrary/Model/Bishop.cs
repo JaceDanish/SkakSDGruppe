@@ -17,7 +17,7 @@ namespace ChessClassLibrary.Model
         {
             if (Math.Abs(x1 - y1) != Math.Abs(x2 - y2))
             {
-                if (x1 - y1 != x2 - y2)
+                if (x1 + y1 != x2 + y2)
                 {
                     return false;
                 }
