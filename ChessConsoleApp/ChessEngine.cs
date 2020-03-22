@@ -57,10 +57,10 @@ namespace ChessConsoleApp
 			intArray[0] = ((int)inputArray[1] - 49);
 			intArray[3] = ((int)inputArray[2] - 97);
 			intArray[2] = ((int)inputArray[3] - 49);
-			Console.WriteLine("intArray 0: " + intArray[1]);
-			Console.WriteLine("intArray 1: " + intArray[0]);
-			Console.WriteLine("intArray 2: " + intArray[3]);
-			Console.WriteLine("intArray 3: " + intArray[2]);
+			//Console.WriteLine("intArray 0: " + intArray[1]);
+			//Console.WriteLine("intArray 1: " + intArray[0]);
+			//Console.WriteLine("intArray 2: " + intArray[3]);
+			//Console.WriteLine("intArray 3: " + intArray[2]);
 
 			return intArray;
 		}
@@ -96,8 +96,6 @@ namespace ChessConsoleApp
 
 		private bool WrongColor(int[] intArray) //returns true if trying to move wrong color piece
 		{
-			bool color = game.Board[intArray[0], intArray[1]].IsWhite();
-			Console.WriteLine(color);
 			return game.Board[intArray[0], intArray[1]].IsWhite() != whitesMove;
 		}
 
