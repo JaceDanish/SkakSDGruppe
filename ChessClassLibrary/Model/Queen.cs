@@ -21,15 +21,10 @@ namespace ChessClassLibrary.Model
 
         public bool CheckMove(Game game, int x1, int y1, int x2, int y2)
         {
-            if (_rook.CheckMove(game, x1, y1, x2, y2))
-            {
-                return true;
-            }
-            else if (_bishop.CheckMove(game, x1, y1, x2, y2))
-            {
-                return true;
-            }
-            return false;
+            if (!_bishop.CheckMove(game, x1, y1, x2, y2))
+                if (!_rook.CheckMove(game, x1, y1, x2, y2))
+                    return false;
+            return true;
         }
 
         
