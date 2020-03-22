@@ -19,17 +19,33 @@ namespace ChessClassLibrary.Model
 			int xVect = CreateVector(x2 - x1);
 			int yVect = CreateVector(y2 - y1);
 
-			for (int i = x1 + xVect ; i != x2 ; i = i + xVect)
-			{
-			 for (int j = y1 + yVect; i != x2; i = i + yVect)
-			 {
-			  Console.WriteLine("x: " + i + " y: " + j);
-			  Console.ReadKey();
-			  if (game.Board[i, j] != null) return false;
-			 }
+			int x = x1;
+			int y = y1;
 
-			 return true;
+			while (x != x2 || y != y2)
+			{
+				x = x + xVect;
+				y = y + yVect;
+				//Console.WriteLine($"\nChecking {x} , {y}\nChessPiece: {game.Board[x, y]}");
+				//Console.ReadKey();
+				if (x == x2 && y == y2) return true;
+				if (game.Board[x, y] != null) return false;
 			}
+
+			return true;
+
+
+			//for (int i = x1 + xVect ; i != x2 ; i = i + xVect)
+			//{
+			// for (int j = y1 + yVect; i != x2; i = i + yVect)
+			// {
+			//  Console.WriteLine("x: " + i + " y: " + j);
+			//  Console.ReadKey();
+			//  if (game.Board[i, j] != null) return false;
+			// }
+
+			//}
+			// return true;
 
 
 			//int xDist = x2 - x1;
@@ -37,22 +53,6 @@ namespace ChessClassLibrary.Model
 
 
 			//Console.WriteLine("xVect: " + xVect + "\nyVect: " + yVect);
-
-			//int x = x1;
-			//int y = y1;
-
-			//while (x != x2 || y != y2)
-			//{
-			//x = x + xVect;
-			//y = y + yVect;
-			//Console.WriteLine($"\nChecking {x} , {y}\nChessPiece: {game.Board[x, y]}");
-			//Console.ReadKey();
-			//if (x == x2 && y == y2) return true;
-			//if (game.Board[x, y] != null) return false;
-			//}
-
-			//return true;
-
 
 
 		}
@@ -75,114 +75,3 @@ namespace ChessClassLibrary.Model
 		}
 	}
 }
-/*
-bool res = false;
-// Brætfelt F3 (x1, y1) husk det er 0 indekseret
-if (x1 == x2 || y1 == y2)
-{
-	 if (x2 > x1)
-	 {
-		  for (int i = x1; i < 8; i++)
-		  {
-				if (i != x2)
-				{
-					 if (game.Board[i, y1] != null)
-					 {
-						  res = false;
-					 }
-				}
-				else
-				{
-					 if (game.Board[i, y1] != null)
-					 {
-						  if (game.Board[i, y1].IsWhite() == IsWhite())
-						  {
-								res = false;
-						  }
-						  else res = true;
-					 }
-				}
-		  }
-	 }
-
-	 if (x2 < x1)
-	 {
-		  for (int i = x1; i > -1; i--)
-		  {
-				if (i != x2)
-				{
-					 if (game.Board[i, y1] != null)
-					 {
-						  res = false;
-					 }
-				}
-				else
-				{
-					 if (game.Board[i, y1] != null)
-					 {
-						  if (game.Board[i, y1].IsWhite() == IsWhite())
-						  {
-								res = false;
-						  }
-						  else res = true;
-					 }
-				}
-		  }
-	 }
-
-	 if (y2 > y1)
-	 {
-		  for (int i = y1; i < 8; i++)
-		  {
-				if (i != y2)
-				{
-					 if (game.Board[x1, i] != null)
-					 {
-						  res = false;
-					 }
-				}
-				else
-				{
-					 if (game.Board[x1, i] != null)
-					 {
-						  if (game.Board[x1, i].IsWhite() == IsWhite())
-						  {
-								res = false;
-						  }
-						  else res = true;
-					 }
-				}
-		  }
-	 }
-
-	 if (y2 < -1)
-	 {
-		  for (int i = y1; i > -1; i--)
-		  {
-				if (i != y2)
-				{
-					 if (game.Board[x1, i] != null)
-					 {
-						  res = false;
-					 }
-				}
-				else
-				{
-					 if (game.Board[x1, i] != null)
-					 {
-						  if (game.Board[x1, i].IsWhite() == IsWhite())
-						  {
-								res = false;
-						  }
-						  else res = true;
-					 }
-				}
-		  }
-	 }
-}
-else res = false;
-
-return res;
-*/
-
-
