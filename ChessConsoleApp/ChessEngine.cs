@@ -93,7 +93,7 @@ namespace ChessConsoleApp
 		
 		private bool CheckBorders(int[] intArray)// intArray must be between 0 and 7 
 		{
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < 4; i++)
 			{
 				if (intArray[i] < 0 || intArray[i] > 7)
 				{
