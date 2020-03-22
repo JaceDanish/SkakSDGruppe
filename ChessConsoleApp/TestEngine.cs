@@ -131,6 +131,7 @@ namespace ChessConsoleApp
                 xKing = inp[2];
                 yKing = inp[3];
             }
+
             MovePiece(inp, testGame);
 
             for (int i = 0; i < 8; i++)
