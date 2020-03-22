@@ -24,13 +24,14 @@ namespace ChessClassLibrary.Model
             }
             if (x1 > x2 && y1 > y2)
             {
-                for (int i = x1-1, j = y1-1; (i >= x2 || j >= y2); i--, j--)
+                for (int i = x1 - 1, j = y1 - 1; (i >= x2 || j >= y2); i--, j--)
                 {
                     if (!BishopCanMove(i, j, y2, x2, game))
                     {
                         return false;
                     }
                 }
+                return true;
             }
             if (x1 > x2 && y2 > y1)
             {
@@ -41,6 +42,7 @@ namespace ChessClassLibrary.Model
                         return false;
                     }
                 }
+                return true;
             }
             if (y1 > y2 && x2 > x1)
             {
@@ -51,6 +53,7 @@ namespace ChessClassLibrary.Model
                         return false;
                     }
                 }
+                return true;
             }
             if (x2 > x1 && y2 > y1)
             {
@@ -61,6 +64,7 @@ namespace ChessClassLibrary.Model
                         return false;
                     }
                 }
+                return true;
             }
 
             Console.WriteLine("Bishop error");
