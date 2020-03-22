@@ -29,7 +29,7 @@ namespace ChessConsoleApp
 			}
 		}
 
-		private bool CheckKing(Game game, int[] inp)
+		private bool CheckKing(int[] inp, Game game)
 		{
 			Game testGame = new Game();
 
@@ -123,6 +123,7 @@ namespace ChessConsoleApp
 			if (WrongColor(intArray, game)) return false;
 			if (!TakingWrongColorPiece(intArray, game)) return false;
 			if (!ChessPieceCheckMove(intArray, game)) return false;
+			if (CheckKing(intArray, game)) return false;
 			return true;
 		}
 
