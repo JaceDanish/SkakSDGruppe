@@ -7,7 +7,7 @@ namespace ChessClassLibrary.Model
 	public class Game
 	{
 		public IChessPiece[,] Board;
-		public bool _gameOver;
+		private bool _gameOver;
 
 		public Game()
 		{
