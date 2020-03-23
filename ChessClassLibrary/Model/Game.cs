@@ -13,7 +13,6 @@ namespace ChessClassLibrary.Model
 		{
 			Board = new IChessPiece[8,8];
 			Board = FillBoard();
-			
 		}
 
 		public bool GameOver
