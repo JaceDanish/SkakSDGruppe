@@ -2,10 +2,7 @@
 using ChessClassLibrary.Model;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading;
 
 namespace ChessConsoleApp
 {
@@ -16,7 +13,6 @@ namespace ChessConsoleApp
 
 		public void Start()
 		{
-			
 			//Nu kan vi lave tegn
 			Console.OutputEncoding = Encoding.Unicode;
 			int[] intArray;
@@ -110,10 +106,6 @@ namespace ChessConsoleApp
 			intArray[0] = ((int)inputArray[1] - 49);
 			intArray[3] = ((int)inputArray[2] - 97);
 			intArray[2] = ((int)inputArray[3] - 49);
-			//Console.WriteLine("intArray 0: " + intArray[1]);
-			//Console.WriteLine("intArray 1: " + intArray[0]);
-			//Console.WriteLine("intArray 2: " + intArray[3]);
-			//Console.WriteLine("intArray 3: " + intArray[2]);
 
 			return intArray;
 		}
@@ -191,26 +183,6 @@ namespace ChessConsoleApp
 			return true;
 		}
 
-
-		//public bool TestMove()
-		//{
-
-		//	game.PrintBoard();
-		//	game.Board[1, 0] = null;
-		//	game.Board[1, 1] = null;
-		//	game.Board[1, 2] = null;
-		//	game.Board[1, 3] = null;
-		//	game.Board[1, 4] = null;
-		//	game.Board[1, 5] = null;
-		//	game.Board[1, 6] = null;
-		//	game.Board[1, 7] = null;
-
-		//	bool res = game.Board[0, 3].CheckMove(game, 0, 3, 5, 5);
-
-		//	Console.WriteLine($"konge move {res}");
-		//	return false;
-		//}
-
 		bool GameOver(Game game, int x, int y)
 		{
 			if (game.Board[x, y] != null && game.Board[x, y] is King)
@@ -231,7 +203,6 @@ namespace ChessConsoleApp
 								}
 							}
 
-				//List<(int, int)>enemyArray = GetPlacements(game, !game.Board[inpArray[0], inpArray[1]].White());
 				List<(int, int)> playerArray = GetPlacements(game, game.Board[x, y].IsWhite());
 
 				Game testGame = new Game();

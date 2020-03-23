@@ -67,13 +67,11 @@ namespace ChessClassLibrary.Model
 							break;
 					}
 				}
-
 			return board;
 		}
 
 		public void PrintBoard()
 		{
-			
 			Console.Clear();
 			for (int i = -1; i < 8; i++)
 			{
@@ -101,7 +99,6 @@ namespace ChessClassLibrary.Model
 						Console.Write(" . ");
 					}
 				}
-
 			}
 		}
 	}
