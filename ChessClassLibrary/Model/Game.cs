@@ -7,6 +7,7 @@ namespace ChessClassLibrary.Model
 	public class Game
 	{
 		public IChessPiece[,] Board;
+		public bool _gameOver;
 
 		public Game()
 		{
@@ -14,6 +15,12 @@ namespace ChessClassLibrary.Model
 			Board = FillBoard();
 
 		}
+
+		public bool GameOver
+        {
+            get { return _gameOver; }
+			set { _gameOver = value; }
+        }
 
 		//public IChessPiece[,] Board { get; set; }
 
