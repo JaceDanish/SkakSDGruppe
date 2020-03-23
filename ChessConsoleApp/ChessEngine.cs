@@ -12,7 +12,6 @@ namespace ChessConsoleApp
 	class ChessEngine
 	{
 		private bool whitesMove = true;
-		private bool gameOver = false;
 		private Game game = new Game();
 
 		public void Start()
@@ -21,7 +20,7 @@ namespace ChessConsoleApp
 			//Nu kan vi lave tegn
 			Console.OutputEncoding = Encoding.Unicode;
 			int[] intArray;
-			while (!gameOver)
+			while (!game.GameOver)
 			{
 				game.PrintBoard();
 				intArray = ReadMove();
