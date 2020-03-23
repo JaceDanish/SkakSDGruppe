@@ -26,7 +26,7 @@ namespace ChessConsoleApp
 
                 whitesTurn = (whitesTurn ? false : true);
             }
-            while (!game.GameFinished);
+            while (!game.GameOver);
 
             Console.WriteLine("GAME OVER!");
             Console.WriteLine($"Player {(whitesTurn ? "white" : "black")} wins!");
@@ -50,7 +50,7 @@ namespace ChessConsoleApp
                 inpStr = inpStr.ToLower();
                 inpArray = inpStr.ToCharArray();
             }
-            while (!CheckInput(inpArray, game, whitesTurn) && !game.GameFinished);
+            while (!CheckInput(inpArray, game, whitesTurn) && !game.GameOver);
 
             return CharToInt(inpArray);
         }
@@ -98,7 +98,7 @@ namespace ChessConsoleApp
                 // if (game.Board[intInpArray[0], intInpArray[1]].White() != whitesTurn)
                 if (GameOver(game, intInpArray[0], intInpArray[1]) || GameOver(game, intInpArray[2], intInpArray[3]))
                 {
-                    game.GameFinished = true;
+                    game.GameOver = true;
 
                 }
 
