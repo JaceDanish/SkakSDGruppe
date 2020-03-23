@@ -66,7 +66,7 @@ namespace ChessConsoleApp
 						{
 							if (testGame.Board[i, j].CheckMove(testGame, i, j, xKing, yKing))
 							{
-								//Console.WriteLine($"{i}, {j}");
+								Console.WriteLine($"{i}, {j}");
 								return false;
 							}
 						}
@@ -119,7 +119,18 @@ namespace ChessConsoleApp
 			if (WrongColor(intArray, game)) return false;
 			if (!TakingWrongColorPiece(intArray, game)) return false;
 			if (!ChessPieceCheckMove(intArray, game)) return false;
-			if (!CheckKing(intArray, game)) return false;
+			if (!CheckKing(intArray, game))
+			{
+				if (game.Board[intArray[0], intArray[1]].IsWhite() != whitesMove)
+					if (GameOver(game, intArray))
+					{
+						Console.WriteLine($"Game over!\n");
+					}
+
+				game.PrintBoard();
+				Console.WriteLine($"\nKing in check!");
+				return false;
+			}
 			return true;
 		}
 
@@ -193,6 +204,78 @@ namespace ChessConsoleApp
 		//	Console.WriteLine($"konge move {res}");
 		//	return false;
 		//}
+
+		bool GameOver(Game game, int[] inpArray)
+		{
+			(int kingX, int kingY) = GetKing(game, game.Board[inpArray[0], inpArray[1]].IsWhite());
+
+			for (int i = kingX - 1; i < kingX + 2; i++)
+				for (int j = kingY - 1; j < kingY + 2; j++)
+					for (int a = 0; a < 8; a++)
+						for (int b = 0; b < 8; b++)
+						{
+							if (game.Board[a, b] != null && game.Board[a, b].IsWhite() != game.Board[inpArray[0], inpArray[1]].IsWhite())
+							{
+								if (game.Board[a, b].CheckMove(game, a, b, kingX, kingY))
+									return false;
+							}
+						}
+
+			//List<(int, int)>enemyArray = GetPlacements(game, !game.Board[inpArray[0], inpArray[1]].IsWhite());
+			List<(int, int)> playerArray = GetPlacements(game, game.Board[inpArray[0], inpArray[1]].IsWhite());
+
+			Game testGame = new Game();
+
+			int[] kingArray = new int[] { kingX, kingY, kingX, kingY };
+
+			for (int i = 0; i < 8; i++)
+				for (int j = 0; j < 8; j++)
+					testGame.Board[i, j] = game.Board[i, j];
+
+			foreach (var p in playerArray)
+			{
+				(int x, int y) = p;
+				for (int i = 0; i < 8; i++)
+					for (int j = 0; j < 8; j++)
+					{
+						if (testGame.Board[x, y].CheckMove(testGame, x, y, i, j))
+						{
+							int[] inp = new int[] { x, y, i, j };
+							MovePiece(inp, testGame);
+							if (CheckKing(kingArray, testGame))
+								return false;
+						}
+					}
+			}
+			return true;
+		}
+
+		(int, int) GetKing(Game game, bool kingColor)
+		{
+			for (int i = 0; i < 8; i++)
+			{
+				for (int j = 0; j < 8; j++)
+				{
+					if (game.Board[i, j] is King && game.Board[i, j].IsWhite() == kingColor)
+					{
+						return (i, j);
+					}
+				}
+			}
+			return (0, 0);
+		}
+
+		List<(int, int)> GetPlacements(Game game, bool placesColor)
+		{
+			List<(int, int)> placements = new List<(int, int)>();
+			for (int i = 0; i < 8; i++)
+				for (int j = 0; j < 8; j++)
+				{
+					if (game.Board[i, j] != null && game.Board[i, j].IsWhite() != placesColor)
+						placements.Add((i, j));
+				}
+			return placements;
+		}
 	}
 
 }
