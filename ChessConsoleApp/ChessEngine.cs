@@ -1,7 +1,11 @@
 ﻿using ChessClassLibrary;
 using ChessClassLibrary.Model;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
 
 namespace ChessConsoleApp
 {
@@ -32,8 +36,8 @@ namespace ChessConsoleApp
 			Game testGame = new Game();
 
 			for (int i = 0; i < 8; i++)
-				for (int j = 0; j < 8; j++)
-					testGame.Board[i, j] = game.Board[i, j];
+			for (int j = 0; j < 8; j++)
+				testGame.Board[i, j] = game.Board[i, j];
 
 			int xKing = 0, yKing = 0;
 
@@ -85,7 +89,7 @@ namespace ChessConsoleApp
 
 		public int[] ReadMove()
 		{
-			int[] intArray = new int[4] { -1, -1, -1, -1 };
+			int[] intArray = new int[4] {-1, -1, -1, -1};
 			do
 			{
 				Console.WriteLine($"\n\nPlayer {(whitesMove ? "white" : "black")}, move:");
@@ -96,7 +100,7 @@ namespace ChessConsoleApp
 			return intArray;
 
 		}
-
+		
 		private int[] ConvertToIntArray(string input)
 		{
 			input = input.ToLower();
@@ -137,7 +141,7 @@ namespace ChessConsoleApp
 		}
 
 		private bool TakingWrongColorPiece(int[] intArray, Game game) //returns true if trying to take a piece of the opposite color
-																						  //returns true if there is no chesspiece on the new square
+																			//returns true if there is no chesspiece on the new square
 		{
 			if (game.Board[intArray[2], intArray[3]] == null) return true;
 			if (game.Board[intArray[2], intArray[3]] != null)
@@ -174,7 +178,7 @@ namespace ChessConsoleApp
 			}
 			return true;
 		}
-
+		
 		private bool CheckBorders(int[] intArray, Game game)// intArray must be between 0 and 7. Returns true if it is
 		{
 			for (int i = 0; i < 4; i++)
