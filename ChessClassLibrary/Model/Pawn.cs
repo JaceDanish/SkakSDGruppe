@@ -18,6 +18,11 @@ namespace ChessClassLibrary.Model
 
 		public bool CheckMove(Game game, int x1, int y1, int x2, int y2)
         {
+            _moved = true;
+
+            if ((_isWhite && x1 == 1) || (!_isWhite && x1 == 6))
+                _moved = false;
+
             if (IsWhite() && x2 <= x1)
                 return false;
             if (!IsWhite() && x1 <= x2)
@@ -36,7 +41,6 @@ namespace ChessClassLibrary.Model
             else if (game.Board[x2, y2] != null)
                 return false;
 
-            _moved = true;
             return true;
         }
 
