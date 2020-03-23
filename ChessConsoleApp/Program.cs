@@ -1,19 +1,18 @@
 ﻿using System;
-using ChessClassLibrary.Model;
 
 namespace ChessConsoleApp
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-         ChessEngine chessEngine = new ChessEngine();
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			ChessEngine chessEngine = new ChessEngine();
 
-         chessEngine.Start();
-         Console.ReadLine();
+			chessEngine.Start();
+			Console.ReadLine();
 
-         //TestEngine testEngine = new TestEngine();
-         //testEngine.Start();
-      }
-    }
+			//TestEngine testEngine = new TestEngine();
+			//testEngine.Start();
+		}
+	}
 }
