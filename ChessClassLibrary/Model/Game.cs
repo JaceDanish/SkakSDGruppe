@@ -13,7 +13,7 @@ namespace ChessClassLibrary.Model
 		{
 			Board = new IChessPiece[8,8];
 			Board = FillBoard();
-
+			
 		}
 
 		public bool GameOver
@@ -74,6 +74,7 @@ namespace ChessClassLibrary.Model
 
 		public void PrintBoard()
 		{
+			
 			Console.Clear();
 			for (int i = -1; i < 8; i++)
 			{

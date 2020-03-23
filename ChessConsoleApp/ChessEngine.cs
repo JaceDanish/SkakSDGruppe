@@ -13,6 +13,7 @@ namespace ChessConsoleApp
 
 		public void Start()
 		{
+			
 			//Nu kan vi lave tegn
 			Console.OutputEncoding = Encoding.Unicode;
 			int[] intArray;
@@ -22,6 +23,7 @@ namespace ChessConsoleApp
 				intArray = ReadMove();
 				MovePiece(intArray, game);
 				whitesMove = !whitesMove;
+				
 			}
 		}
 
