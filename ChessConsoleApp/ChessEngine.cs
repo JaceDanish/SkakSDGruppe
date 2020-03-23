@@ -127,10 +127,11 @@ namespace ChessConsoleApp
 			if (!ChessPieceCheckMove(intArray, game)) return false;
 			if (!CheckKing(intArray, game))
 			{
-				if (GameOver(game, intArray[0], intArray[1]) || GameOver(game, intArray[2], intArray[3]))
-				{
-					game.GameOver = true;
-				}
+				if (game.Board[intArray[0], intArray[1]].IsWhite() != whitesMove)
+					if (GameOver(game, intArray[0], intArray[1]) || GameOver(game, intArray[2], intArray[3]))
+					{
+						game.GameOver = true;
+					}
 
 				game.PrintBoard();
 				Console.WriteLine($"\nKing in check!");
