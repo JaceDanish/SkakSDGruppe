@@ -277,7 +277,7 @@ namespace ChessConsoleApp
 			{
 				Console.WriteLine($"Player {(whitesTurn ? "white" : "black")}, move");
 
-				(int x1, int y1) = pieces[rand.Next(0, 8)];
+				(int x1, int y1) = pieces[rand.Next(0, pieces.Count)];
 
 				x2 = rand.Next(0, 8);
 				y2 = rand.Next(0, 8);
