@@ -20,13 +20,15 @@ namespace ChessConsoleApp
 			{
 				game.PrintBoard();
 
-				if (!whitesMove)
-					MovePiece(AiInput(whitesMove, game), game);
-				else
-				{
-					intArray = ReadMove();
-					MovePiece(intArray, game);
-				}
+				//if (!whitesMove)
+				//	MovePiece(AiInput(whitesMove, game), game);
+				//else
+				//{
+				//	intArray = ReadMove();
+				//	MovePiece(intArray, game);
+				//}
+				intArray = ReadMove();
+				MovePiece(intArray, game);
 
 				whitesMove = !whitesMove;
 				
@@ -267,57 +269,80 @@ namespace ChessConsoleApp
 			return placements;
 		}
 		//////////////////IDIOT AI////////////////////////
-		private int[] AiInput(bool whitesTurn, Game game)
-		{
-			List<(int, int)> pieces = GetPlacements(game, !whitesTurn);
-			Random rand = new Random();
-			int[] inpArray;
-			int x2, y2;
-			do
-			{
-				Console.WriteLine($"Player {(whitesTurn ? "white" : "black")}, move");
+		//private int[] AiInput(bool whitesTurn, Game game)
+		//{
+		//	List<(int, int)> pieces = GetPlacements(game, !whitesTurn);
+		//	Random rand = new Random();
+		//	int[] inpArray;
+		//	int x2, y2;
 
-				(int x1, int y1) = pieces[rand.Next(0, pieces.Count)];
+		//	do
+		//	{
+		//		Console.WriteLine($"Player {(whitesTurn ? "white" : "black")}, move");
 
-				x2 = rand.Next(0, 8);
-				y2 = rand.Next(0, 8);
+		//		(int, int)[] temp = pieces.ToArray();
 
-				inpArray = new int[] { x1, y1, x2, y2 };
-			}
-			while (!CheckAi(inpArray, game, whitesTurn) && !game.GameOver);
+		//		int index;
+		//		do
+		//		{
+		//			index = rand.Next(0, temp.Length);
+		//		} while (temp[index] == (-1, -1));
 
-			return inpArray;
-		}
+		//		(int x1, int y1) = temp[index];
 
-		private bool CheckAi(int[] intInpArray, Game game, bool whitesTurn)
-		{
-			if (game.Board[intInpArray[2], intInpArray[3]] != null && game.Board[intInpArray[2], intInpArray[3]].IsWhite() == whitesTurn)
-			{
-				game.PrintBoard();
-				Console.WriteLine("Illegal move!");
-				return false;
-			}
-			if (!game.Board[intInpArray[0], intInpArray[1]].CheckMove(game, intInpArray[0], intInpArray[1], intInpArray[2], intInpArray[3]))
-			{
-				game.PrintBoard();
-				Console.WriteLine("Illegal move!");
-				return false;
-			}
-			if (!CheckKing(intInpArray, game))
-			{
-				if (game.Board[intInpArray[0], intInpArray[1]].IsWhite() != whitesTurn)
-					if (GameOver(game, intInpArray[0], intInpArray[1]) || GameOver(game, intInpArray[2], intInpArray[3]))
-					{
-						game.GameOver = true;
+		//		temp[index] = (-1, -1);
 
-					}
+		//		x2 = rand.Next(0, 8);
+		//		y2 = rand.Next(0, 8);
 
-				game.PrintBoard();
-				Console.WriteLine("King in check!");
-				return false;
-			}
-			return true;
-		}
+		//		inpArray = new int[] { x1, y1, x2, y2 };
+
+
+		//		for (int countX = 0; !CheckMove(inpArray, game) && countX < 8; countX++)
+		//		{
+		//			inpArray[2] = (inpArray[2] == 7 ? 0 : inpArray[2]++);
+
+		//			for (int countY = 0; !CheckMove(inpArray, game) && countY < 8; countY++)
+		//			{
+		//				inpArray[3] = (inpArray[3] == 7 ? 0 : inpArray[3]++);
+		//			}
+		//		}
+				
+		//	}
+		//	while (!CheckAi(inpArray, game, whitesTurn) && !game.GameOver);
+
+		//	return inpArray;
+		//}
+
+		//private bool CheckAi(int[] intInpArray, Game game, bool whitesTurn)
+		//{
+		//	if (game.Board[intInpArray[2], intInpArray[3]] != null && game.Board[intInpArray[2], intInpArray[3]].IsWhite() == whitesTurn)
+		//	{
+		//		game.PrintBoard();
+		//		Console.WriteLine("Illegal move!");
+		//		return false;
+		//	}
+		//	if (!game.Board[intInpArray[0], intInpArray[1]].CheckMove(game, intInpArray[0], intInpArray[1], intInpArray[2], intInpArray[3]))
+		//	{
+		//		game.PrintBoard();
+		//		Console.WriteLine("Illegal move!");
+		//		return false;
+		//	}
+		//	if (!CheckKing(intInpArray, game))
+		//	{
+		//		if (game.Board[intInpArray[0], intInpArray[1]].IsWhite() != whitesTurn)
+		//			if (GameOver(game, intInpArray[0], intInpArray[1]) || GameOver(game, intInpArray[2], intInpArray[3]))
+		//			{
+		//				game.GameOver = true;
+
+		//			}
+
+		//		game.PrintBoard();
+		//		Console.WriteLine("King in check!");
+		//		return false;
+		//	}
+		//	return true;
+		//}
 		/////////////////////////////////////////////////
 	}
 }
